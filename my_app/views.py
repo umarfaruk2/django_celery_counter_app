@@ -2,15 +2,18 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.views import APIView
-from .models import TaskModel
-from .serializers import TaskSerializer
-# from django_celery_counter_app.celery import add_value
+from rest_framework import status
+from .models import TaskModel, CounterHistory
+from .serializers import TaskSerializer, CounterHistorySerializer
 from .tasks import add_value
 
 
-class AddTaskView(APIView):
+class TaskView(APIView):
     def get(self, request, format=None):
-        pass
+        history = CounterHistory.objects.all() 
+        serializer = CounterHistorySerializer(history, many=True) 
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request, format=None):
         json_data = request.data
         value = json_data.get('value')
