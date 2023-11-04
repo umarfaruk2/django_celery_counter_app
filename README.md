@@ -1,8 +1,10 @@
 # django_celery_counter_app
 
-This project build by django, celery and rest_framework. What can you do by this project see in below
+In this project I try to implement celery with django. First we have a counter value now You provide a value in body that add in current value in every give amount request. Second our counter value store in counter_history that update in every 10 minute.  
 
 I provide 2 endpoint ones you post a amount that update the counter current value and another one get the all counter history every 10 minute. 
+
+Celery code you find in - `my_app.tasks.py`
 
 ### Post value that update current value
 - http://127.0.0.1:8000/counter/ (post method)
@@ -13,7 +15,7 @@ I provide 2 endpoint ones you post a amount that update the counter current valu
 
 ## How to start this project
 - Download the project and unzip
-- After download open any code editor(In you device must have django, rest_framework, celery)
+- After download open it any code editor(In you device must have django, rest_framework, celery)
 - python manage.py makemigrations(In terminal)
 - python manage.py migrate(In terminal)
 
